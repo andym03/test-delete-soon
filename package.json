@@ -1,0 +1,60 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate setup with webpack, express, babel, eslint, jest",
+  "private": true,
+  "main": "server.js",
+  "browser": "./dist/index.html",
+  "engines": {
+    "node": "12.14.x",
+    "npm": "6.13.x"
+  },
+  "scripts": {
+    "test": "jest",
+    "build:dev": "webpack-dev-server --open",
+    "build:docs": "rm -rf documentation && ./node_modules/.bin/jsdoc -c jsdoc.config.js",
+    "build:prod": "rm -rf dist && webpack -p --progress",
+    "heroku-postbuild": "webpack -p --progress && npm run build:docs && npm run cleanup",
+    "cleanup": "npm prune --production && rm -rf src test .eslintrc.js *.config.js README.md",
+    "start": "node server.js & webpack-dev-server --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patrickfrank1/express-webpack-boilerplate"
+  },
+  "author": "Patrick Frank",
+  "license": "MIT",
+  "devDependencies": {
+    "@mongodb-js/charts-embed-dom": "^1.0.0-beta.2",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "file-loader": "^5.1.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^6.0.0",
+    "jest": "^25.1.0",
+    "jsdoc": "^3.6.3",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "terser-webpack-plugin": "^2.3.5",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "regenerator-runtime": "^0.13.3"
+  }
+}
